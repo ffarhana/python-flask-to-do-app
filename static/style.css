@@ -1,0 +1,24 @@
+/* Basic CSS styling for the To-Do list app */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto; /* Center the container */
+}
+
+ul {
+    list-style: none; /* Remove bullets from list items */
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* Add a subtle border between items */
+}
+
+form {
+    margin-bottom: 20px; /* Add space below the form */
+}

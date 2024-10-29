@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>My To-Do List</h1>
+
+<!-- Form to add a new task, submits a POST request to the /add route -->
+<form action="{{ url_for('add_task') }}" method="POST">
+    <input type="text" name="task" placeholder="Enter a new task" required>
+    <button type="submit">Add</button>
+</form>
+
+<!-- List of tasks, each with options to toggle completion or delete -->
+<ul>
+    {% for task in tasks %}
+    <li style="text-decoration: {{ 'line-through' if task.done else 'none' }}">
+        <!-- Display the task title, strikethrough if marked as done -->
+        {{ task.title }}
+        
+        <!-- Link to toggle the task completion status -->
+        <a href="{{ url_for('toggle_task', task_id=loop.index0) }}">
+            [Mark as {{ 'Incomplete' if task.done else 'Complete' }}]
+        </a>
+        
+        <!-- Link to delete the task -->
+        <a href="{{ url_for('delete_task', task_id=loop.index0) }}">[Delete]</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
